@@ -2,31 +2,37 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
-export default function ClientItemComponent({ item }) {
+export default function ClientItemComponent({ client, index, length }) {
   return (
-    <ClientItem>
+    <ClientItem style={index === length - 1 ? styles.lastChild : ''}>
       <Avatar
         source={{
-          uri: item.avatar,
+          uri: client.avatar,
         }}
       />
       <View>
-        <ItemName>{item.name}</ItemName>
-        <ItemProblem>{item.description}</ItemProblem>
+        <ItemName>{client.name}</ItemName>
+        <ItemProblem>{client.description}</ItemProblem>
       </View>
-      <ItemTime active>
-        <ItemTimeText active>{item.time}</ItemTimeText>
+      <ItemTime>
+        <ItemTimeText>{client.time}</ItemTimeText>
       </ItemTime>
     </ClientItem>
   );
 }
+
+const styles = StyleSheet.create({
+  lastChild: {
+    marginBottom: 30,
+  },
+});
 
 const ClientItem = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   border-bottom-width: 2px;
   border-bottom-color: #f3f3f3;
-  padding-bottom: 10px;
+  padding: 10px 0;
 `;
 
 const Avatar = styled.Image`
