@@ -2,9 +2,17 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
-export default function ClientItemComponent({ client, index, length }) {
+export default function PatientItem({ client, index, length, navigation }) {
   return (
-    <ClientItem style={index === length - 1 ? styles.lastChild : ''}>
+    <ClientItem
+      style={index === length - 1 ? styles.lastChild : ''}
+      onPress={() => {
+        navigation.navigate('PatientCartScreen', {
+          name: client.name,
+          client: client.description,
+        });
+      }}
+    >
       <Avatar
         source={{
           uri: client.avatar,
