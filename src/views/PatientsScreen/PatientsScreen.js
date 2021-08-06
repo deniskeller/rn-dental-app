@@ -1,13 +1,19 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
-import { PatientItem } from '../../components';
+import { BaseButtonAdd, BaseContainer, PatientItem } from '../../components';
 
 export default function PatientsScreen({ clients, navigation }) {
+  const goToPatientAddScreen = () => {
+    navigation.navigate('PatientAddScreen', {
+      title: 'Добавить пациента',
+      button_title: 'Добавить',
+    });
+  };
+
   return (
-    <GroupContent>
-      <ScrollView style={styles.scrollView}>
+    <BaseContainer>
+      <ScrollView>
         {clients.map((item, i) => {
           return (
             <View key={i}>
@@ -27,11 +33,8 @@ export default function PatientsScreen({ clients, navigation }) {
           );
         })}
       </ScrollView>
-
-      <AddBtn>
-        <Ionicons name='ios-add' size={32} color='white' />
-      </AddBtn>
-    </GroupContent>
+      <BaseButtonAdd method={goToPatientAddScreen} />
+    </BaseContainer>
   );
 }
 
@@ -131,31 +134,10 @@ PatientsScreen.defaultProps = {
   ],
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    marginHorizontal: 20,
-  },
-});
-
 const TimePeriodTitle = styled.Text`
   font-size: 22px;
   font-weight: bold;
   color: #000;
   padding: 10px 0;
   margin-bottom: 10px;
-`;
-
-const GroupContent = styled.View``;
-
-const AddBtn = styled.TouchableOpacity`
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-  width: 64px;
-  height: 64px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  background: #2a86ff;
-  box-shadow: 0px 4px 10px rgba(42, 134, 255, 0.6);
 `;

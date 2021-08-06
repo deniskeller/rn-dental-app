@@ -1,7 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { PatientCartScreen, PatientsScreen } from './views';
+import {
+  PatientAddScreen,
+  PatientCartScreen,
+  PatientsScreen,
+} from './src/views';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +22,11 @@ export default function App() {
           name='PatientCartScreen'
           component={PatientCartScreen}
           options={PatientCartScreen.navigationOptions}
+        />
+        <Stack.Screen
+          name='PatientAddScreen'
+          component={PatientAddScreen}
+          options={PatientAddScreen.navigationOptions}
         />
       </Stack.Navigator>
     </NavigationContainer>
