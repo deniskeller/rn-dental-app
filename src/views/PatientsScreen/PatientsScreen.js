@@ -4,8 +4,8 @@ import styled from 'styled-components/native';
 import { BaseButtonAdd, BaseContainer, PatientItem } from '../../components';
 
 export default function PatientsScreen({ clients, navigation }) {
-  const goToPatientAddScreen = () => {
-    navigation.navigate('PatientAddScreen', {
+  const goToPatientActionScreen = () => {
+    navigation.navigate('PatientActionScreen', {
       title: 'Добавить пациента',
       button_title: 'Добавить',
     });
@@ -33,7 +33,7 @@ export default function PatientsScreen({ clients, navigation }) {
           );
         })}
       </ScrollView>
-      <BaseButtonAdd method={goToPatientAddScreen} />
+      <BaseButtonAdd method={goToPatientActionScreen} />
     </BaseContainer>
   );
 }

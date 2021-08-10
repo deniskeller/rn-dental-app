@@ -57,8 +57,8 @@ const receptions = [
 export default function PatientCartScreen({ route, navigation }) {
   const { name, client } = route.params;
 
-  const goToPatientAddScreen = () => {
-    navigation.navigate('PatientAddScreen', {
+  const goToPatientActionScreen = () => {
+    navigation.navigate('PatientActionScreen', {
       title: 'Добавить прием',
       button_title: 'Добавить',
     });
@@ -86,7 +86,7 @@ export default function PatientCartScreen({ route, navigation }) {
           </View>
         </ScrollView>
       </PatientReception>
-      <BaseButtonAdd method={goToPatientAddScreen} />
+      <BaseButtonAdd method={goToPatientActionScreen} />
     </BaseContainer>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
-  PatientAddScreen,
+  PatientActionScreen,
   PatientCartScreen,
   PatientsScreen,
 } from './src/views';
@@ -24,9 +24,9 @@ export default function App() {
           options={PatientCartScreen.navigationOptions}
         />
         <Stack.Screen
-          name='PatientAddScreen'
-          component={PatientAddScreen}
-          options={PatientAddScreen.navigationOptions}
+          name='PatientActionScreen'
+          component={PatientActionScreen}
+          options={PatientActionScreen.navigationOptions}
         />
       </Stack.Navigator>
     </NavigationContainer>
