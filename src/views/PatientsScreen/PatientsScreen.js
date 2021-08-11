@@ -39,7 +39,7 @@ export default function PatientsScreen({ clients, navigation }) {
 }
 
 PatientsScreen.navigationOptions = {
-  title: 'Пациенты',
+  title: 'Список приемов',
   headerTintColor: '#2a86ff',
   headerTitleStyle: {
     fontWeight: 'bold',

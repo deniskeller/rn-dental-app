@@ -9,4 +9,5 @@ export default function BaseContainer({ children }) {
 const Container = styled.View`
   padding: 25px;
   flex: 1;
+  background-color: #fff;
 `;

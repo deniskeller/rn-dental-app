@@ -1,33 +1,36 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import styled from 'styled-components/native';
 
 export default function BaseInput(props) {
   return (
-    <View style={styles.formFieldWrapper}>
-      <Text style={styles.labelText}>{props.label}</Text>
-      <TextInput
+    <InputWrapper style={{ ...props.style }}>
+      <InputLabel>{props.label}</InputLabel>
+      <InputField
         placeholder={props.placeholder}
-        style={styles.formFieldText}
         value={props.value}
         {...props.textInputProps}
         onChange={(e) => props.handleInputChange(e.nativeEvent.text)}
       />
-    </View>
+    </InputWrapper>
   );
 }
 
-const styles = StyleSheet.create({
-  formFieldWrapper: {},
-  formFieldText: {
-    fontSize: 20,
-    borderRadius: 15,
-    borderWidth: 1,
-    padding: 12,
-  },
-  labelText: {
-    fontSize: 20,
-    marginBottom: 12,
-    paddingLeft: 10,
-    paddingTop: 10,
-  },
-});
+const InputWrapper = styled.View`
+  border-bottom-width: 2px;
+  border-bottom-color: #f3f3f3;
+`;
+
+const InputLabel = styled.Text`
+  font-size: 14px;
+  line-height: 17px;
+  color: #a0a2a4;
+  padding-top: 10px; ;
+`;
+
+const InputField = styled.TextInput.attrs({
+  placeholderTextColor: '#303030',
+})`
+  font-size: 18px;
+  padding: 10px 0px;
+  color: #303030;
+`;

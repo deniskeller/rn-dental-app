@@ -2,8 +2,17 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { FontAwesome5, Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function PatientReceptionItem({ item }) {
+  const navigation = useNavigation();
+  const goToReceptionActionScreen = () => {
+    navigation.navigate('ReceptionActionScreen', {
+      title: 'Изменить прием',
+      button_title: 'Изменить',
+    });
+  };
+
   return (
     <Container>
       <ToothNumber>
@@ -20,7 +29,7 @@ export default function PatientReceptionItem({ item }) {
         </InfoDate>
         <InfoPrice>{item.price} р</InfoPrice>
       </Info>
-      <Details>
+      <Details onPress={goToReceptionActionScreen}>
         <Entypo name='dots-three-vertical' size={16} color='black' />
       </Details>
     </Container>

@@ -5,6 +5,7 @@ import {
   PatientActionScreen,
   PatientCartScreen,
   PatientsScreen,
+  ReceptionActionScreen,
 } from './src/views';
 
 const Stack = createNativeStackNavigator();
@@ -27,6 +28,11 @@ export default function App() {
           name='PatientActionScreen'
           component={PatientActionScreen}
           options={PatientActionScreen.navigationOptions}
+        />
+        <Stack.Screen
+          name='ReceptionActionScreen'
+          component={ReceptionActionScreen}
+          options={ReceptionActionScreen.navigationOptions}
         />
       </Stack.Navigator>
     </NavigationContainer>

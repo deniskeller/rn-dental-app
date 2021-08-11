@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { BaseButton, BaseContainer, BaseInput } from '../../components';
 
-export default function PatientActionScreen({ route, navigation }) {
+export default function ReceptionActionScreen({ route, navigation }) {
   const { title, button_title } = route.params;
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -34,8 +34,8 @@ export default function PatientActionScreen({ route, navigation }) {
   return (
     <BaseContainer>
       <BaseInput
-        label='Имя фамилия'
-        placeholder='Введите имя и фамилию'
+        label='Номер зуба'
+        placeholder='Введите номер'
         value={username}
         handleInputChange={setUsername}
         textInputProps={{
@@ -45,8 +45,20 @@ export default function PatientActionScreen({ route, navigation }) {
       <Text>{username}</Text>
 
       <BaseInput
-        label='Номер телефона'
-        placeholder='Введите телефон'
+        label='Диагноз'
+        placeholder='Введите диагноз'
+        value={password}
+        handleInputChange={setPassword}
+        textInputProps={{
+          autoCapitalize: 'none',
+        }}
+        style={{ marginBottom: 30 }}
+      />
+      <Text>{password}</Text>
+
+      <BaseInput
+        label='Цена'
+        placeholder='Введите цену'
         value={password}
         handleInputChange={setPassword}
         textInputProps={{
@@ -67,7 +79,7 @@ export default function PatientActionScreen({ route, navigation }) {
   );
 }
 
-PatientActionScreen.navigationOptions = {
+ReceptionActionScreen.navigationOptions = {
   headerTintColor: '#2a86ff',
   headerTitleStyle: {
     fontWeight: 'bold',
