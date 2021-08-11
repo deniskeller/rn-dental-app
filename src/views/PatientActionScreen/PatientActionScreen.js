@@ -18,28 +18,27 @@ export default function PatientActionScreen({ route, navigation }) {
     console.log('password: ', password);
   };
 
-  const handleInputChange = (value) => {
-    console.log('value: ', value);
-    setUsername(value);
-  };
-  const handleInputChange2 = (value) => {
-    console.log('value: ', value);
-    setPassword(value);
-  };
-
   return (
     <BaseContainer>
       <BaseInput
         label='Username'
         placeholder='Your username'
-        handleInputChange={handleInputChange}
+        value={username}
+        handleInputChange={setUsername}
+        textInputProps={{
+          autoCapitalize: 'none',
+        }}
       />
       <Text>{username}</Text>
 
       <BaseInput
         label='Password'
         placeholder='Your password'
-        handleInputChange={handleInputChange2}
+        value={password}
+        handleInputChange={setPassword}
+        textInputProps={{
+          autoCapitalize: 'none',
+        }}
       />
       <Text>{password}</Text>
 
