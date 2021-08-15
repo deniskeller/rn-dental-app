@@ -6,8 +6,7 @@ import { BaseButton, BaseContainer, BaseInput } from '../../components';
 
 export default function PatientActionScreen({ route, navigation }) {
   const { title, button_title } = route.params;
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [user, setUser] = React.useState({ username: '', phone: '' });
 
   const computedBackground = () => {
     if (button_title === 'Добавить') return '#87CC6F';
@@ -27,34 +26,32 @@ export default function PatientActionScreen({ route, navigation }) {
   }, [navigation, title]);
 
   const click = () => {
-    console.log('username: ', username);
-    console.log('password: ', password);
+    console.log('user: ', user);
   };
 
   return (
     <BaseContainer>
       <BaseInput
-        label='Имя фамилия'
-        placeholder='Введите имя и фамилию'
-        value={username}
-        handleInputChange={setUsername}
+        label='Имя Фамилия'
+        placeholder='Введите имя'
+        value={user.username}
+        onChange={(e) => setUser({ ...user, username: e.nativeEvent.text })}
         textInputProps={{
           autoCapitalize: 'none',
         }}
+        style={{ marginBottom: 10 }}
       />
-      <Text>{username}</Text>
 
       <BaseInput
-        label='Номер телефона'
-        placeholder='Введите телефон'
-        value={password}
-        handleInputChange={setPassword}
+        label='Номер теелфона'
+        placeholder='Введите номер'
+        value={user.phone}
+        onChange={(e) => setUser({ ...user, phone: e.nativeEvent.text })}
         textInputProps={{
           autoCapitalize: 'none',
         }}
-        style={{ marginBottom: 30 }}
+        style={{ marginBottom: 20 }}
       />
-      <Text>{password}</Text>
 
       <BaseButton
         method={click}

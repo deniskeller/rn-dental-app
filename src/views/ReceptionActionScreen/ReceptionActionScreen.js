@@ -1,13 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { BaseButton, BaseContainer, BaseInput } from '../../components';
 
 export default function ReceptionActionScreen({ route, navigation }) {
   const { title, button_title } = route.params;
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [user, setUser] = React.useState({
+    username: '',
+    diagnosis: '',
+    price: 10,
+    date: '',
+    time: '',
+  });
 
   const computedBackground = () => {
     if (button_title === 'Добавить') return '#87CC6F';
@@ -27,8 +31,7 @@ export default function ReceptionActionScreen({ route, navigation }) {
   }, [navigation, title]);
 
   const click = () => {
-    console.log('username: ', username);
-    console.log('password: ', password);
+    console.log('user: ', user);
   };
 
   return (
@@ -36,37 +39,36 @@ export default function ReceptionActionScreen({ route, navigation }) {
       <BaseInput
         label='Номер зуба'
         placeholder='Введите номер'
-        value={username}
-        handleInputChange={setUsername}
+        value={user.username}
+        onChange={(e) => setUser({ ...user, username: e.nativeEvent.text })}
         textInputProps={{
           autoCapitalize: 'none',
         }}
+        style={{ marginBottom: 10 }}
       />
-      <Text>{username}</Text>
 
       <BaseInput
         label='Диагноз'
         placeholder='Введите диагноз'
-        value={password}
-        handleInputChange={setPassword}
+        value={user.diagnosis}
+        onChange={(e) => setUser({ ...user, diagnosis: e.nativeEvent.text })}
         textInputProps={{
           autoCapitalize: 'none',
         }}
-        style={{ marginBottom: 30 }}
+        style={{ marginBottom: 10 }}
       />
-      <Text>{password}</Text>
 
       <BaseInput
+        keyboardType='numeric'
         label='Цена'
         placeholder='Введите цену'
-        value={password}
-        handleInputChange={setPassword}
+        value={user.price.toString()}
+        onChange={(e) => setUser({ ...user, price: e.nativeEvent.text })}
         textInputProps={{
           autoCapitalize: 'none',
         }}
-        style={{ marginBottom: 30 }}
+        style={{ marginBottom: 10 }}
       />
-      <Text>{password}</Text>
 
       <BaseButton
         method={click}
