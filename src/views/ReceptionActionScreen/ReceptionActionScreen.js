@@ -38,7 +38,7 @@ export default function ReceptionActionScreen({ route, navigation }) {
     <BaseContainer>
       <BaseInput
         label='Номер зуба'
-        placeholder='Введите номер'
+        placeholder='Номер зуба'
         value={user.username}
         onChange={(e) => setUser({ ...user, username: e.nativeEvent.text })}
         textInputProps={{
@@ -49,7 +49,7 @@ export default function ReceptionActionScreen({ route, navigation }) {
 
       <BaseInput
         label='Диагноз'
-        placeholder='Введите диагноз'
+        placeholder='Диагноз'
         value={user.diagnosis}
         onChange={(e) => setUser({ ...user, diagnosis: e.nativeEvent.text })}
         textInputProps={{
@@ -61,9 +61,31 @@ export default function ReceptionActionScreen({ route, navigation }) {
       <BaseInput
         keyboardType='numeric'
         label='Цена'
-        placeholder='Введите цену'
+        placeholder='Цена'
         value={user.price.toString()}
         onChange={(e) => setUser({ ...user, price: e.nativeEvent.text })}
+        textInputProps={{
+          autoCapitalize: 'none',
+        }}
+        style={{ marginBottom: 10 }}
+      />
+
+      <BaseInput
+        label='Дата'
+        placeholder='Дата'
+        value={user.date}
+        onChange={(e) => setUser({ ...user, date: e.nativeEvent.text })}
+        textInputProps={{
+          autoCapitalize: 'none',
+        }}
+        style={{ marginBottom: 10 }}
+      />
+
+      <BaseInput
+        label='Время'
+        placeholder='Время'
+        value={user.time}
+        onChange={(e) => setUser({ ...user, time: e.nativeEvent.text })}
         textInputProps={{
           autoCapitalize: 'none',
         }}

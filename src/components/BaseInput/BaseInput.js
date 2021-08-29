@@ -1,20 +1,35 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-export default function BaseInput({ ...props }) {
+const BaseInput = ({ ...props }) => {
+  const [isLabel, setisLabel] = React.useState(null);
+
+  const computedPlaceholder = () => {
+    if (isLabel) {
+      return '';
+    } else {
+      return props.placeholder;
+    }
+  };
+
   return (
     <InputWrapper style={{ ...props.style }}>
-      <InputLabel>{props.label}</InputLabel>
+      {isLabel || props.value ? <InputLabel>{props.label}</InputLabel> : null}
+
       <InputField
         keyboardType={props.keyboardType}
         value={props.value}
-        placeholder={props.placeholder}
+        placeholder={computedPlaceholder()}
         textInputProps={props.textInputProps}
         onChange={props.onChange}
+        onFocus={() => setisLabel(true)}
+        onBlur={() => setisLabel(false)}
       />
     </InputWrapper>
   );
-}
+};
+
+export default BaseInput;
 
 const InputWrapper = styled.View``;
 
@@ -25,7 +40,7 @@ const InputLabel = styled.Text`
 `;
 
 const InputField = styled.TextInput.attrs({
-  placeholderTextColor: '#303030',
+  placeholderTextColor: '#A0A2A4',
 })`
   font-size: 18px;
   padding: 10px 0px;
