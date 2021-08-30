@@ -33,6 +33,7 @@ export default function PatientsScreen({ clients, navigation }) {
           );
         })}
       </ScrollView>
+
       <BaseButtonAdd method={goToPatientActionScreen} />
     </BaseContainer>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import {
